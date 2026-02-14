@@ -2,7 +2,7 @@ const key = '0cb2a94d8372941766303c654da36058';
 
 async function coordinate(city) {
   const response = await fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`,
   );
   const data = await response.json();
 
@@ -16,11 +16,11 @@ async function coordinate(city) {
   };
 }
 
-async function weatherData() {
-  const { glat, glon } = await coordinate('Delhi');
+async function weatherData(city) {
+  const { glat, glon } = await coordinate(city);
 
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${glat}&lon=${glon}&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${glat}&lon=${glon}&appid=${key}`,
   );
 
   if (!response.ok) {
@@ -30,6 +30,8 @@ async function weatherData() {
   return response.json();
 }
 
-weatherData()
+weatherData('Delhi')
   .then((data) => console.log(data.weather))
   .catch((err) => console.error(err.message));
+
+export { weatherData };

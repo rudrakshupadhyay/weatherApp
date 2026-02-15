@@ -30,8 +30,5 @@ async function weatherData(city) {
   return response.json();
 }
 
-weatherData('Delhi')
-  .then((data) => console.log(data.weather))
-  .catch((err) => console.error(err.message));
 
 export { weatherData };

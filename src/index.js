@@ -1,6 +1,3 @@
-import './data.js';
+import { init } from './dom';
 import './style.css';
-console.log('hello');
-function add(num) {
-  return num + 1;
-}
+init();

@@ -49,7 +49,13 @@ async function init() {
 }
 async function updateCity(city) {
   const cityStr = city.trim().toLowerCase();
-  const initCity = await weatherData(cityStr);
+  let initCity;
+  try {
+    initCity = await weatherData(cityStr);
+  } catch (err) {
+    alert(err);
+    return;
+  }
   const temp = initCity.main.temp - 273.15;
   const feelLike = initCity.main.feels_like - 273.15;
   const humdity = initCity.main.humidity;

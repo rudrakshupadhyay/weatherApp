@@ -63,6 +63,7 @@ async function updateCity(city) {
   const maxTemp = initCity.main.temp_max - 273.15;
   const icon = initCity.weather[0].icon;
   const des = initCity.weather[0].description;
+  console.log(initCity);
   upDateData(
     city.charAt(0).toUpperCase() + city.slice(1).toLowerCase(),
     temp.toFixed(2),
